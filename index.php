@@ -10,15 +10,19 @@
 </head>
 <body>
 	<div class="wrapper">
-		<section class="form login">
+		<section class="form signup">
 			<header>Real Time Chat</header>
 
-			<form action="#">
-				<div class="error-text">This is an error.</div>
+			<form action="#" enctype="multipart/form-data">
+				<div class="error-text"></div>
+				<div class="field input">
+					<label for="name">Name</label>
+					<input type="text" placeholder="Enter Name" name="name">
+				</div>
 
 				<div class="field input">
 					<label for="email">Email</label>
-					<input type="email" placeholder="Enter email" name="email">
+					<input type="text" placeholder="Enter email" name="email">
 				</div>
 				<div class="field input">
 					<label for="password">
@@ -26,14 +30,18 @@
 					<input type="password" placeholder="Enter password" name="password">
 					<i class="fas fa-eye"></i>
 				</div>
-
+				<div class="field image">
+					<label for="image">Image</label>
+					<input type="file" name="image">
+				</div>
 				<div class="field button">
 					<input type="submit" value="Signup To Continue">
 				</div>
-				<div class="link">Don't have an account? <a href="#">Create Now</a></div>
+				<div class="link">Already signed up? <a href="login.php">Login Now</a></div>
 			</form>
 		</section>
-	</div>`
-	<script src="./js/pass-show-hide.js"></script>
+	</div>
 </body>
+<script src="./js/pass-show-hide.js"></script>
+<script src="./js/signup.js"></script>
 </html>
