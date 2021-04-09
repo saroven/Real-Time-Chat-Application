@@ -21,8 +21,13 @@ if (!empty($email) && !empty($password)) { //if all field is not empty
         if($check_mail){
             if ($data) {
                 $udata = $data->fetch_assoc();
+                $status = "Active now";
+                $sql = "UPDATE users SET active_status = '{$status}' WHERE id = {$udata['id']}";
+                $result = $db->update($sql);
+                if($result){
                 $_SESSION['user_id'] = $udata['id'];
 			    echo "success";
+                }
             }else{
                 echo 'Password is incorrect!';
             }

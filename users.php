@@ -1,115 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Real Time Chat</title>
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-</head>
-<body>
+<?php
+	session_start();
+	if (!isset($_SESSION['user_id'])) {
+		header("location: login.php");
+	}else{
+
+	include 'inc/config.php';
+	include 'inc/database.php';
+	$uid = $_SESSION['user_id'];
+	$db = new Database ();
+	$sql = "SELECT * FROM users WHERE id = $uid";
+	$data = $db->select($sql);
+
+    if($data){
+    	$user = $data->fetch_assoc();
+    }
+}
+
+ ?>
+
+
+<?php require 'inc/header.php'; ?>
 	<div class="wrapper">
 		<section class="users">
 			<header>
 				<div class="content">
-					<img src="avater.png" alt="">
+					<img src="/inc/img/profile/<?php echo $user['image']; ?>" alt="">
 					<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>Active Now</p>
+						<span><?php echo $user['name']; ?></span>
+						<p><?php echo $user['active_status']; ?></p>
 					</div>
 				</div>
-				<a href="#" class="logout">Logout</a>
+				<a href="logout.php?id=<?php echo $user['id']; ?>" class="logout">Logout</a>
 			</header>
 			<div class="search">
 				<span class="text">Select an user to start chat</span>
-				<input type="text" class="search-btn" placeholder="Enter name to search...">
+				<input type="text" class="search-btn" name="searchTerm" placeholder="Enter name to search...">
 				<button class="btn"><i class="fas fa-search"></i></button>
 			</div>
 			<div class="users-list">
-				<a href="#">
-					<div class="content">
-						<img src="avater.png" alt="">
-						<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>This is a test message</p>
-					</div>
-					</div>
-					<div class="status-dot"><i class="fas fa-circle"></i></div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="avater.png" alt="">
-						<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>This is a test message</p>
-					</div>
-					</div>
-					<div class="status-dot"><i class="fas fa-circle"></i></div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="avater.png" alt="">
-						<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>This is a test message</p>
-					</div>
-					</div>
-					<div class="status-dot"><i class="fas fa-circle"></i></div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="avater.png" alt="">
-						<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>This is a test message</p>
-					</div>
-					</div>
-					<div class="status-dot"><i class="fas fa-circle"></i></div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="avater.png" alt="">
-						<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>This is a test message</p>
-					</div>
-					</div>
-					<div class="status-dot"><i class="fas fa-circle"></i></div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="avater.png" alt="">
-						<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>This is a test message</p>
-					</div>
-					</div>
-					<div class="status-dot"><i class="fas fa-circle"></i></div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="avater.png" alt="">
-						<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>This is a test message</p>
-					</div>
-					</div>
-					<div class="status-dot"><i class="fas fa-circle"></i></div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="avater.png" alt="">
-						<div class="details">
-						<span>Coding Bangladesh</span>
-						<p>This is a test message</p>
-					</div>
-					</div>
-					<div class="status-dot"><i class="fas fa-circle"></i></div>
-				</a>
+
 			</div>
 		</section>
 	</div>
-	<script src="./js/users.js"></script>
-</body>
-</html>
+<?php require 'inc/footer.php'; ?>

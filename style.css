@@ -219,7 +219,7 @@ width: 40px;
 	color: #468669;
 }
 /* this is for showing offline status */
-.users-list a .status-dot .ofline{
+.users-list a .status-dot .offline{
 	font-size: 12px;
 	color: #ccc;
 }

@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Real Time Chat</title>
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-</head>
-<body>
+<?php
+	session_start();
+	if (isset($_SESSION['user_id'])) {
+		header("location: users.php");
+	}
+?>
+
+<?php require 'inc/header.php'; ?>
 	<div class="wrapper">
 		<section class="form login">
 			<header>Real Time Chat</header>
@@ -28,7 +25,7 @@
 				</div>
 
 				<div class="field button">
-					<input type="submit" value="Signup To Continue">
+					<input type="submit" value="Login">
 				</div>
 				<div class="link">Don't have an account? <a href="index.php">Create Now</a></div>
 			</form>

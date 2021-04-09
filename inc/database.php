@@ -46,17 +46,17 @@ class Database{
 				return false;
 			}
 		}
-		// // update data
-		// public function update($q)
-		// {
-		// 	$result = $this->link->query($q) or die($this->link->error.__line__);
-		// 	if ($result) {
-		// 		return $result;
-		// 		exit();
-		// 	} else {
-		// 		return false;
-		// 	}
-		// }
+		// update data
+		public function update($q)
+		{
+			$result = $this->link->query($q) or die($this->link->error.__line__);
+			if ($result) {
+				return $result;
+				exit();
+			} else {
+				return false;
+			}
+		}
 		// // delete data
 		// public function delete($q)
 		// {
